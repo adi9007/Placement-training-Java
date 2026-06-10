@@ -1,0 +1,292 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "Untitled-1",
+    "content": "CREATE DATABASE DigitalBooksshelf;\n\nUSE DigitalBooksshelf;\n\nCREATE TABLE books (\n    book_id INT PRIMARY KEY,\n    title VARCHAR(100),\n    author VARCHAR(50),\n    genre VARCHAR(50),\n    page_count INT,\n    status VARCHAR(20)\n);\n\nINSERT INTO books VALUES\n(1, 'Atomic Habits', 'James Clear', 'Self Help', 320, 'Reading'),\n(2, 'Harry Potter', 'J.K. Rowling', 'Fantasy', 500, 'Finished'),\n(3, 'The Alchemist', 'Paulo Coelho', 'Fiction', 210, 'Reading'),\n(4, 'Rich Dad Poor Dad', 'Robert Kiyosaki', 'Finance', 336, 'Finished'),\n(5, 'Ikigai', 'Hector Garcia', 'Self Help', 208, 'Reading');\n\nSELECT * FROM books\nWHERE genre = 'Self Help';\n\nUPDATE books\nSET status = 'Finished'\nWHERE book_id = 1;\nSELECT * FROM books;\n\nDELETE FROM books\nWHERE book_id = 3;\nSELECT * FROM books;\n\n\n",
+    "options": {
+        "tabSize": 4,
+        "insertSpaces": true,
+        "indentSize": 4,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": null,
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 34,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "2320c78f-4701-40d9-bdef-b3e66e708d1a"
+                    ]
+                },
+                "currentHeight": 300,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 34
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 34,
+                            "length": 24
+                        },
+                        "contentStart": 36,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 58,
+                            "length": 168
+                        },
+                        "contentStart": 60,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 226,
+                            "length": 356
+                        },
+                        "contentStart": 228,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 582,
+                            "length": 48
+                        },
+                        "contentStart": 584,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 630,
+                            "length": 57
+                        },
+                        "contentStart": 632,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 687,
+                            "length": 21
+                        },
+                        "contentStart": 688,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 708,
+                            "length": 38
+                        },
+                        "contentStart": 711,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 746,
+                            "length": 21
+                        },
+                        "contentStart": 747,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 767,
+                            "length": 3
+                        },
+                        "contentStart": 766,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "3ca63a23-c469-4307-bc34-709e7f261ede",
+                    "resultId": "2320c78f-4701-40d9-bdef-b3e66e708d1a",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Atomic Habits",
+                            "2": "James Clear",
+                            "3": "Self Help",
+                            "4": 320,
+                            "5": "Finished"
+                        },
+                        {
+                            "0": 2,
+                            "1": "Harry Potter",
+                            "2": "J.K. Rowling",
+                            "3": "Fantasy",
+                            "4": 500,
+                            "5": "Finished"
+                        },
+                        {
+                            "0": 4,
+                            "1": "Rich Dad Poor Dad",
+                            "2": "Robert Kiyosaki",
+                            "3": "Finance",
+                            "4": 336,
+                            "5": "Finished"
+                        },
+                        {
+                            "0": 5,
+                            "1": "Ikigai",
+                            "2": "Hector Garcia",
+                            "3": "Self Help",
+                            "4": 208,
+                            "5": "Reading"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "book_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "title",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "author",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "genre",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "page_count",
+                            "field": "4",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "status",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 4 records retrieved in 0.544ms"
+                    },
+                    "totalRowCount": 4,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "\nSELECT * FROM books;",
+                    "updatable": true,
+                    "fullTableName": "books"
+                }
+            ]
+        }
+    ]
+}
