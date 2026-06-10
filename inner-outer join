@@ -1,0 +1,57 @@
+CREATE DATABASE customer;
+USE customer;
+
+CREATE TABLE customers (
+    custID INT PRIMARY KEY,
+    custname VARCHAR(50),
+    bookID INT,
+    book_name VARCHAR(50),
+    phone_number INT
+);
+
+CREATE TABLE books (
+    BookID INT PRIMARY KEY,
+    book_name VARCHAR(50),
+    author VARCHAR(50),
+    price INT,
+    genre VARCHAR(50)
+);
+
+INSERT INTO customers VALUES
+(1, 'Adi', 101, 'Atomic Habits', '9876543210'),
+(2, 'Rahul', 102, 'Harry Potter', '9123456780'),
+(3, 'Sneha', 103, 'The Alchemist', '9988776655'),
+(4, 'Neha', 106, 'Deep Work', '9871234567'),
+(5, 'Aman', 104, 'Rich Dad Poor Dad', '9090909090');
+
+INSERT INTO customer VALUES
+(1, 'Adi', 101, '9876543210'),
+(2, 'Rahul', 102, '9123456780'),
+(3, 'Sneha', 103, '9988776655'),
+(4, 'Neha', 106, '9871234567'),
+(5, 'Aman', 104, '9090909090');
+
+SELECT * FROM customer;
+SELECT * FROM books;
+
+SELECT customer.cust_name,
+       books.book_name,
+       books.author,
+       books.price
+FROM customer
+INNER JOIN books
+ON customer.book_id = books.book_id;
+
+SELECT customer.cust_name,
+       books.book_name,
+       books.genre
+FROM customer
+LEFT OUTER JOIN books
+ON customer.book_id = books.book_id;
+
+SELECT customer.cust_name,
+       books.book_name,
+       books.genre
+FROM customer
+RIGHT OUTER JOIN books
+ON customer.book_id = books.book_id;
