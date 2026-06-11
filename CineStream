@@ -1,0 +1,96 @@
+CREATE DATABASE CineStream;
+
+USE CineStream;
+
+-- MOVIES TABLE
+CREATE TABLE Movies(
+    Movie_ID INT PRIMARY KEY AUTO_INCREMENT,
+    Title VARCHAR(50) NOT NULL,
+    Genre VARCHAR(50) NOT NULL,
+    Release_Year INT,
+    Rental_Rate DECIMAL(5,2)
+);
+
+-- FAN TABLE
+CREATE TABLE Fan(
+    User_ID INT PRIMARY KEY AUTO_INCREMENT,
+    Username VARCHAR(50) UNIQUE NOT NULL,
+    Email VARCHAR(50) UNIQUE NOT NULL,
+    Join_Date DATE,
+    Status VARCHAR(50)
+);
+
+-- WATCHLOG TABLE
+CREATE TABLE WatchLog(
+    Log_ID INT PRIMARY KEY AUTO_INCREMENT,
+    User_ID INT,
+    Movie_ID INT,
+    Watch_Date DATETIME,
+    Duration_Minutes INT
+);
+
+-- INSERT INTO MOVIES
+INSERT INTO Movies (Title, Genre, Release_Year, Rental_Rate) VALUES
+('Inception', 'Sci-Fi', 2010, 149.99),
+('Interstellar', 'Sci-Fi', 2014, 199.99),
+('Avengers Endgame', 'Action', 2019, 179.99),
+('Joker', 'Drama', 2019, 129.99),
+('Parasite', 'Thriller', 2019, 159.99),
+('3 Idiots', 'Comedy', 2009, 99.99),
+('The Batman', 'Action', 2022, 189.99),
+('Dune', 'Sci-Fi', 2021, 209.99),
+('Fight Club', 'Drama', 1999, 119.99),
+('Your Name', 'Anime', 2016, 139.99);
+
+-- INSERT INTO FAN
+INSERT INTO Fan (Username, Email, Join_Date, Status) VALUES
+('adi07', 'adi@gmail.com', '2025-01-10', 'Active'),
+('rahulx', 'rahul@gmail.com', '2025-02-15', 'Active'),
+('sneha22', 'sneha@gmail.com', '2025-03-01', 'Inactive'),
+('amanlive', 'aman@gmail.com', '2025-03-20', 'Active'),
+('neha_dev', 'neha@gmail.com', '2025-04-05', 'Premium'),
+('priya_art', 'priya@gmail.com', '2025-04-18', 'Active'),
+('rohit99', 'rohit@gmail.com', '2025-05-02', 'Premium'),
+('vikram_op', 'vikram@gmail.com', '2025-05-10', 'Inactive'),
+('aaryanYT', 'aaryan@gmail.com', '2025-05-25', 'Active'),
+('karan07', 'karan@gmail.com', '2025-06-01', 'Premium');
+
+-- INSERT INTO WATCHLOG
+INSERT INTO WatchLog (User_ID, Movie_ID, Watch_Date, Duration_Minutes) VALUES
+(1, 1, '2026-06-01 18:30:00', 120),
+(2, 3, '2026-06-01 20:00:00', 150),
+(3, 5, '2026-06-02 17:45:00', 132),
+(4, 2, '2026-06-02 21:15:00', 169),
+(5, 4, '2026-06-03 19:00:00', 122),
+(6, 6, '2026-06-03 22:10:00', 140),
+(7, 7, '2026-06-04 18:20:00', 176),
+(8, 8, '2026-06-04 20:40:00', 155),
+(9, 9, '2026-06-05 21:00:00', 139),
+(10, 10, '2026-06-05 16:30:00', 112);
+
+-- ACTIVE USERS AFTER 2025
+SELECT * FROM Fan
+WHERE Join_Date > '2025-01-01'
+AND Status = 'Active';
+
+-- UPDATE USER STATUS
+UPDATE Fan
+SET Status = 'Active'
+WHERE Username = 'johndoe123';
+
+-- DELETE INACTIVE USERS WITH NO WATCH HISTORY
+DELETE Fan
+FROM Fan
+LEFT JOIN WatchLog
+ON Fan.User_ID = WatchLog.User_ID
+WHERE Fan.Status = 'Inactive'
+AND WatchLog.User_ID IS NULL;
+
+-- GENRE POPULARITY REPORT
+SELECT Movies.Genre,
+       COUNT(WatchLog.Movie_ID) AS Total_Watch_Count
+FROM Movies
+INNER JOIN WatchLog
+ON Movies.Movie_ID = WatchLog.Movie_ID
+GROUP BY Movies.Genre
+ORDER BY Total_Watch_Count DESC;
